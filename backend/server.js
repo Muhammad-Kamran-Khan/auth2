@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 //middelwares
 app.use(
   cors({
-    origin: "https://auth2.vercel.app",
+    origin: "https://auth2-sigma.vercel.app",
     credentials: true,
   })
 );
