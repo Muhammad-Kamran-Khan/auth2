@@ -22,6 +22,11 @@ app.use(cookieParser());
 
 //routes
 app.use("/api/v1", userRoutes);
+
+//testing route
+app.get('/', (req, res) => {
+  res.send("Hello from server!")
+})
    
 //server function
 const server = async () => {
