@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 dotenv.config();
 import connect from './src/db/connect.js';
-import fs from 'node:fs';
+import userRoutes from './src/routes/userRoutes.js'
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -21,19 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 //routes
-const routeFiles = fs.readdirSync("./src/routes");
-
-routeFiles.forEach((file) => {
-  // use dynamic import
-  import(`./src/routes/${file}`)
-    .then((route) => {
-      app.use("/api/v1", route.default);
-    })
-    .catch((err) => {
-      console.log("Failed to load route file", err);
-    });
-});
-
+app.use("/api/v1", userRoutes);
+   
 //server function
 const server = async () => {
   try {
