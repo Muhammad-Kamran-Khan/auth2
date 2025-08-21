@@ -10,7 +10,7 @@ const UserContext = createContext();
 axios.defaults.withCredentials = true;
 
 export const UserContextProvider = ({ children }) => {
-  const serverUrl = "http://localhost:3000";
+  const serverUrl = "https://auth2-backend.vercel.app";
 
   const navigate = useNavigate();
 
